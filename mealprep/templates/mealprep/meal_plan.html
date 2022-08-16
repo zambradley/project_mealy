@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h1>meal plan</h1>
+<ul>
+  {% for meal in object_list %}
+    <li>{{ meal.meal_item }}</li>
+    <li>
+      <h3>ingredient</h3>
+      <ul>
+        {% for ingredient in meal.meal_item.ingredients.all %}
+          <li>{{ ingredient }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li>{{ meal.recipe }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'mealprep:meal-item-list' %}">meal options</a>
+<a href="{% url 'mealprep:grocery-list' %}">grocery list</a>
+{% endblock content %}

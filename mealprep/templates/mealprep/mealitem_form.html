@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <label for="id_meal">Meal:</label>
+    {{ form.meal }}
+    <label for="id_ingredients">Ingredients:</label>
+    {{ form.ingredients }}
+    <a href="{% url 'mealprep:create-ingredient-item' %}">create ingredient</a>
+    <label for="id_recipe">Recipe:</label>
+    {{ form.recipe }}
+    <input type="submit" value="Update">
+  </form>
+{% endblock content %}
