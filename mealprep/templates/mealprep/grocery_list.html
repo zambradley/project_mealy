@@ -1,13 +1,26 @@
-{% extends "index.html" %}
+{% extends "mealprep/_base.html" %}
+
+{% block header %}
+  <h1>Groceries</h1>
+  <div class="links">
+    <a href="{% url 'mealprep:meal-item-list' %}">Recipes</a>
+    <a href="{% url 'mealprep:meal-plan' %}">Meal Plan</a>
+  </div>
+{% endblock header %}
 
 {% block content %}
-<h1>grocery list</h1>
-<a href="{% url 'mealprep:grocery-list-create' %}">Add</a>
-<ul>
-  {% for grocery in object_list %}
-    <li>{{ grocery }}</li>
-{% endfor %}
-</ul>
-<a href="{% url 'mealprep:meal-item-list' %}">meal options</a>
-<a href="{% url 'mealprep:meal-plan' %}">meal plan</a>
+<div class="container">
+  <div class="list">
+    <ul class="list-content">
+      {% for grocery in object_list %}
+        <li class="item">
+          <input type="radio" name="name" id="id">
+          <p>{{ grocery|capfirst }}</p>
+          <a href="{% url 'mealprep:grocery-list-delete' grocery.id %}">Delete</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'mealprep:grocery-list-create' %}">Add Item</a>
+  </div>
+</div>
 {% endblock content %}

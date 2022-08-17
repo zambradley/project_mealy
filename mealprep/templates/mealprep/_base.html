@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'mealprep/css/style.css' %}">
+  <script src="{% static 'mealprep/js/interact.js' %}" defer></script>
+  {% block static %}{% endblock static %}
+  <title>Mealy</title>
+</head>
+<body>
+  <header>
+    {% block header %}
+    
+    {% endblock header %}
+  </header>
+  {% block content %}
+    
+  {% endblock content %}
+</body>
+</html>

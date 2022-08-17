@@ -1,7 +1,8 @@
-from django.http import Http404
+from http.client import HTTPResponse
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views.generic.edit import FormMixin
+from django.urls import reverse_lazy, reverse
+from django.views.generic.edit import FormMixin, DeletionMixin
 from django.views.generic import (
   FormView, TemplateView, ListView, CreateView,
   DeleteView, UpdateView
@@ -88,8 +89,17 @@ class MealOptionsCreateView(CreateView):
   
 class MealOptionsUpdateView(UpdateView):
   model=MealItem
+  template_name='mealprep/mealitem_update.html'
   fields='__all__'
   success_url=reverse_lazy('mealprep:meal-item-list')
+
+
+class MealOptionsDeleteView(DeleteView):
+  model=MealItem
+  success_url=reverse_lazy('mealprep:meal-item-list')
+  
+  def get(self, request, *args, **kwargs):
+    return self.delete(request, *args, **kwargs)
   
 
 class IngredientCreateView(CreateView):
@@ -103,12 +113,24 @@ class MealPlanView(ListView):
   model = MealPlan
   
 
-class GroceryListView(ListView):
+class GroceryListView(DeletionMixin,ListView):
   template_name = 'mealprep/grocery_list.html'
   model = GroceryList
+  
+  def post(self, request, *args, **kwargs):
+    return super().post(request, *args, **kwargs)
   
 
 class GroceryListCreateView(CreateView):
   model=GroceryList
   fields='__all__'
   success_url=reverse_lazy('mealprep:grocery-list')
+  
+class GroceryListDeleteView(DeleteView):
+  model=GroceryList
+  success_url=reverse_lazy('mealprep:grocery-list')
+  
+  def get(self, request, *args, **kwargs):
+    return self.delete(request, *args, **kwargs)
+  
+  

@@ -1,0 +1,74 @@
+*,
+*::before,
+*::after {
+  margin: 0rem;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  position: relative;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: aqua;
+  justify-content: center;
+  font-size: 3rem;
+  padding: 0.5rem;
+  align-items: center;
+  flex-direction: column;
+}
+header h1 {
+  padding: 2rem;
+}
+header a {
+  padding: 1rem;
+}
+
+.container {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-left: 4.5rem;
+}
+.container a {
+  align-self: start;
+}
+
+.list {
+  display: flex;
+  margin-top: 4rem;
+}
+.list ul {
+  border-style: solid;
+  list-style: none;
+  padding: 0.2rem;
+}
+.list ul li {
+  padding: 0 2rem;
+}
+.list a {
+  margin-left: 1rem;
+}
+
+.item {
+  border-bottom: 0.2rem solid;
+  padding: 0.7rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.item:last-child {
+  border-bottom: 0;
+}
+.item p {
+  padding: 0 0.5rem;
+}
+.item a {
+  padding: 0 0.5rem;
+}/*# sourceMappingURL=style.css.map */

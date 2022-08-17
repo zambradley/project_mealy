@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "mealprep/_base.html" %}
 
 {% block content %}
 <h1>Options</h1>
@@ -8,12 +8,12 @@
     <li>
       {{ meal|capfirst }}
       <form method="post">
-        {{ form }}
         {% csrf_token %}
         <input type="hidden" name="meal" value="{{ meal }}">
         <input type="submit" value="Add">
       </form>
       <a href="{% url 'mealprep:meal-item-update' meal.id %}">Edit</a>
+      <a href="{% url 'mealprep:meal-item-delete' meal.id %}">Delete</a>
     </li>
   {% endfor %}
 </ul>

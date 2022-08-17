@@ -1,0 +1,48 @@
+.container {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-left: 4.5rem;
+
+  a{
+    align-self: start;
+  }
+}
+
+.list {
+  display: flex;
+  margin-top: 4rem;
+
+  ul {
+    border-style: solid;
+    list-style: none;
+    padding: .2rem;
+
+    li {
+      padding: 0 2rem;
+    }
+  }
+
+  a {
+    margin-left: 1rem;
+  }
+}
+
+.item {
+  border-bottom: .2rem solid;
+  padding: .7rem 0;
+  display: flex;
+  justify-content: space-between;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  p {
+    padding: 0 .5rem;
+  }
+
+  a {
+    padding: 0 .5rem;
+  }
+}
